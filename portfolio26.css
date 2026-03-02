@@ -1,0 +1,562 @@
+@font-face {
+    font-family: 'LibreBaskerville';
+    src: url('assets-26/Font-26/LibreBaskerville-Regular.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    }
+
+  
+    
+    
+    body {
+    margin: 0;
+    font-family: 'LibreBaskerville';
+   /* background-color: rgb(241, 241, 241);*/
+    }
+
+    /* Curseur personnalisé */
+    body, a, button {
+        cursor:crosshair;
+      /*  cursor: url('assets-26/fancy-cursor.png') 3 3, auto; */
+
+    }
+    
+    /* Désactiver le curseur custom sur la page About */
+.about-page,
+.about-page a,
+.about-page button,
+header {
+    pointer-events: fill;
+}
+
+
+    
+    
+    header {
+    width: 100%;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    }
+
+    .left {
+        font-family:'LibreBaskerville' ;
+        font-weight: 400;
+color: #00b3ff;
+margin-left: 10px;
+        font-size: 1rem;
+        }
+        
+      
+        
+        .right a {
+        margin-right: 10px;
+        margin-top: 10px;
+        text-decoration: none;
+        color: #ff24c8;
+        font-size: 0.8rem;
+        }
+        
+        
+        .right a:hover {
+            border-bottom: 2px dotted rgb(255, 36, 200);
+            color: #ff24c8;
+            text-decoration: none;
+        }
+        ::selection {
+            background: #ff4400;
+            color: #f1f1f1;
+            }
+
+
+
+            .subheader {
+                line-height: 0.9;
+                font-size: 0.8rem;
+                display: grid;
+                grid-template-columns: repeat(6, auto);
+                justify-content: center;
+                justify-items: center;
+                gap: 10px 10px;
+                }
+                
+                
+                .subheader a {
+                display: inline-block;
+                text-decoration: none;
+                color: #7e7e7e;
+                transition: color 0.1s;
+                }
+                
+                
+                .subheader a:hover {
+                    color: #ff4400;
+                  }
+              
+                  .subheader a.active {
+                    color: rgb(255, 68, 0);
+                  }
+              
+                  @media (max-width: 700px) {
+                    .subheader {
+                      grid-template-columns: repeat(3, auto);
+                    }
+                  }
+                
+                
+           
+                  .carousel-wrapper {
+                    position: relative;
+                    margin: 25px 15px 15px 15px; /* top 25px pour plus d’espace, autres côtés 15px */
+                    height: calc(100vh - 45px - 35px - 15px); /* subheader + footer + marges */
+                    overflow: hidden; /* masque les bords du carrousel */
+                }
+               
+                .carousel-container {
+                    display: flex;
+                    align-items: center;
+                    overflow-x: auto;
+                    overflow-y: hidden;
+                    height: 100%;
+                    scrollbar-width: none;
+                }
+  
+  
+.carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Blur fixe sur les côtés du wrapper */
+.carousel-wrapper::before,
+.carousel-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 100%; 
+    width: 40px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+
+  
+      .carousel-track {
+        display: flex;
+        gap: 20px;
+        padding: 0 50px;
+        height: 100%;
+        align-items: center;
+        padding: 0 0;
+      }
+  
+      .carousel-item {
+        flex-shrink: 0;
+        height: 100%;
+        width: auto;
+      }
+  
+      .carousel-item img,
+      .carousel-item video {
+        max-height: 80%;
+        width: auto;
+       /* max-width: calc(100vw - 30px);  éviter le débordement horizontal */
+        object-fit: contain;
+        display: block;
+         /* Ombre portée subtile */
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+
+.carousel-item.project-start {
+    margin-left: 500px; /* Ajuste cette valeur pour l’espace entre projets */
+}
+      
+/* FOOOOOOOOOTER */
+      footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: none;
+        padding: 15px 20px;
+        box-sizing: border-box;
+        border-top: none;
+    }
+    
+    .footer-content {
+        display: flex;
+        justify-content: space-between; /* Description à gauche, médium à droite */
+        align-items: flex-start; /* Pour que le médium reste aligné en haut */
+        gap: 20px; /* Un petit espace entre les deux si besoin */
+    }
+    
+    .footer-description {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        margin: 0;
+        margin-left: 10px;
+        color: #7e7e7e;
+        flex: 1;              /* prend tout l’espace dispo */
+        max-width: none;     
+        word-wrap: break-word;
+    }
+    
+
+    .footer-medium {
+        font-size: 0.8rem;
+        line-height: 1.4;
+        margin: 0;
+        margin-right: 18px;
+        white-space: nowrap; 
+        color: #7e7e7e;
+
+    }
+
+    .footer-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; /* tout aligné à droite */
+        gap: 2px; /* petit espace entre médium et dimensions */
+        color: #7e7e7e;
+
+    }
+    
+  
+    .footer-dimensions {
+        font-size: 0.8rem;
+        line-height: 1.2;
+        margin: 0;
+        margin-right: 18px;
+        white-space: nowrap; /* éviter que ça passe à la ligne */
+        color: #7e7e7e;
+    }
+    
+
+  
+      @media (max-width: 768px) {
+        .carousel-container {
+          height: calc(100vh - 250px);
+        }
+  
+        .carousel-item {
+          height: 60%;
+        }
+  
+        .carousel-track {
+          gap: 20px;
+          padding: 0 20px;
+        }
+      }
+
+
+     footer::before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    height: 1px;
+    inset: -10px;
+
+    background-color: hsl(var(--footer-hue, 200) 90% 60%);
+    filter: blur(25px);
+    opacity: 0.8;
+
+    transition:
+        background-color 1.8s cubic-bezier(.4, 0, .2, 1),
+        transform 0.6s cubic-bezier(.25, .8, .25, 1);
+
+    z-index: -1;
+}
+
+  /* Fond flou derrière tout le contenu */
+.carousel-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(30px); /* ajuster le blur */
+    opacity: 0.20; /* très faible opacité */
+    z-index: -1; /* derrière tous les éléments */
+    pointer-events: none; /* ne bloque pas les interactions */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Fond animé principal */
+.animated-bg {
+    position: fixed;
+    inset: -10%;
+    z-index: -2;
+    pointer-events: none;
+    background: rgb(241, 241, 241);
+
+    filter: blur(45px);
+    transform: scale(1.1);
+
+    animation: bg-breathe 18s cubic-bezier(.45, 0, .55, 1) infinite;
+}
+
+
+
+/* Gradient bas */
+.animated-bg::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 140px;
+
+    background: linear-gradient(
+        to top,
+        rgb(0, 179, 255),
+        rgba(255,255,255,0)
+    );
+
+    animation: bottom-color-shift 18s ease-in-out infinite;
+}
+
+/* Respiration globale (taille très douce) */
+@keyframes bg-breathe {
+    0% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1.14);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+
+
+/* Bleu → lilas → bleu */
+@keyframes bottom-color-shift {
+    0%, 100% {
+        background: linear-gradient(
+            to top,
+            #00b3ff,
+            rgba(255,255,255,0)
+        );
+    }
+    50% {
+        background: linear-gradient(
+            to top,
+            #e4afff,
+            rgba(255,255,255,0)
+        );
+    }
+}
+
+
+footer.footer-scrolling::before {
+    transform: scaleY(1.25);
+}
+
+
+.carousel-edge-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: calc(100vh - 240.5px);
+        pointer-events: none;
+    z-index: 3;
+}
+
+.carousel-edge-blur::before,
+.carousel-edge-blur::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+}
+
+.carousel-edge-blur::before {
+    left: 0;
+    background: linear-gradient(
+        to right,
+        #f1f1f1 0%,
+       
+        rgba(255, 255, 255, 0) 100%
+    );
+}
+
+.carousel-edge-blur::after {
+    right: 0;
+    background: linear-gradient(
+        to left,
+        #f1f1f1 0%,
+
+        rgba(255, 255, 255, 0) 100%
+    );
+}
+
+
+/* =========================
+   ABOUT PAGE
+========================= */
+
+.about-container {
+    min-height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+}
+
+.about-video {
+    width: 200px;
+    height:200px;
+    object-fit: cover;
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: #7e7e7e;
+
+}
+
+.about-description {
+    font-size: 0.85rem;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.about-links {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.about-links a {
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #ff24c8;
+
+    border-bottom: 2px dotted transparent; /* espace réservé */
+    transition: border-color 0.25s ease;
+}
+
+.about-links a:hover {
+    border-bottom-color: #ff24c8;
+}
+
+
+
+.home-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =========================
+   ABOUT – apparition douce
+========================= */
+
+.about-video {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(6px);
+    animation: about-video-fade 1.2s cubic-bezier(.4, 0, .2, 1) forwards;
+    animation-delay: 0.4s;
+}
+
+@keyframes about-video-fade {
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   ABOUT – apparition brumeuse
+========================= */
+
+.about-text {
+    opacity: 0;
+    filter: blur(8px);
+    animation: about-text-mist 1.6s ease-out forwards;
+    animation-delay: 0.4s;
+}
+
+@keyframes about-text-mist {
+    0% {
+        opacity: 0;
+        filter: blur(10px);
+    }
+    60% {
+        opacity: 0.6;
+        filter: blur(4px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+
+
+/* =========================
+   ANGLAIS-FRANCAIS
+========================= */
+
+.lang-toggle {
+    background: none;
+    border: none;
+    margin-left: 12px;
+    padding: 0;
+    cursor: pointer;
+
+    font-family: inherit;
+    font-size: 0.75rem;
+    color: #ff24c8;
+
+    transition: opacity 0.25s ease;
+}
+
+.lang-toggle:hover {
+    opacity: 1;
+    border-bottom: 2px dotted rgb(255, 36, 200);
+
+}
+
+
+#waitingScreen {
+    position: fixed;
+    inset: 0;
+    background: url("assets-26/waiting-screen.png") center center / cover no-repeat;
+    z-index: 9999;
+    pointer-events: none;
+    height: 100vh;
+
+
+    opacity: 1;
+    transition: opacity 4s ease;
+}
+
+
+#siteContent {
+    transition: filter 4s ease;
+}
+
+#siteContent.is-blurred {
+    filter: blur(14px);
+}
+
+
+

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="portfolio26.css" />
+  <title>About — Lisa Prudent</title>
+</head>
+
+<body>
+    <body class="about-page">
+
+  <div class="animated-bg"></div>
+
+  <!-- Header identique -->
+  <header>
+    <div class="left">
+        <a href="index.html" class="home-link">Lisa Prudent ❦</a>
+      </div>      
+      <button class="lang-toggle" id="langToggle">EN</button>
+
+  </header>
+
+  <!-- CONTENU ABOUT -->
+  <main class="about-container">
+
+    <video
+      class="about-video"
+      src="assets-26/About-video_3.mp4"
+      autoplay
+      muted
+      loop
+      playsinline>
+    </video>
+
+    <div class="about-text">
+        <p
+        class="about-description"
+        data-fr="✪★✩Designer graphique avec un fort intérêt pour le web design et passionnée par les trames de demi-teinte. Je considère les supports de design comme des espaces d’expression en exploitant leurs contraintes de manière créative, notamment à travers l’intégration d'animation. (pour plus d'infos, téléchargez mon cv!)✩★✪"
+        data-en="✪★✩I am a graphic designer with a strong interest in web design and a passion for halftone patterns. I see design materials as spaces for expression using their constraints creatively, especially through the integration of animation. (For more infos, download my Resume below!)✩★✪"
+      >
+        Designer graphique basée à Amiens, travaillant entre image,
+        typographie et édition.
+      </p>
+      
+
+      <div class="about-links">
+        <a
+          href="mailto:lisa.prudent8@gmail.com"
+          data-fr="Mail <lisa.prudent8@gmail.com>"
+          data-en="Email <lisa.prudent8@gmail.com> "
+        >
+          Mail
+        </a>
+      
+        <a
+          href="assets-26/ENG-CV-26-PORTFOLIO-WEB.pdf"
+          target="_blank"
+          data-fr="CV"
+          data-en="Resume"
+        >
+          CV
+        </a>
+      
+        <a
+          href="https://www.instagram.com/neothekiller_"
+          target="_blank"
+        >
+          Instagram
+        </a>
+      
+        <a
+          href="https://www.are.na/lisa-prudent/channels"
+          target="_blank"
+        >
+          Are.na
+        </a>
+      </div>
+      
+
+  </main>
+
+  <script>
+    const langToggle = document.getElementById("langToggle");
+    let currentLang = localStorage.getItem("lang") || "fr";
+  
+    function updateLanguage(lang) {
+      document.documentElement.setAttribute("lang", lang);
+  
+      document.querySelectorAll("[data-fr]").forEach(el => {
+        el.textContent = el.dataset[lang];
+      });
+  
+      langToggle.textContent = lang === "fr" ? "EN" : "FR";
+      localStorage.setItem("lang", lang);
+    }
+  
+    if (langToggle) {
+      langToggle.addEventListener("click", () => {
+        currentLang = currentLang === "fr" ? "en" : "fr";
+        updateLanguage(currentLang);
+      });
+    }
+  
+    updateLanguage(currentLang);
+  </script>
+  
+
+</body>
+</html>

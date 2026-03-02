@@ -1,0 +1,154 @@
+/* Copyright (c) 2024 by Noir Blanc Rouge. https://noirblancrouge.com | contact@noirblancrouge.com | DebutSans. */
+
+@font-face {
+	font-family: "DebutSans-TRIAL-Normal";
+	font-display: auto;
+	src: url("path_to_replace/DebutSans-TRIAL-Normal.woff2") format("woff2"),
+		url("path_to_replace/DebutSans-TRIAL-Normal.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "DebutSans-TRIAL-MediumItalic";
+	font-display: auto;
+	src: url("path_to_replace/DebutSans-TRIAL-MediumItalic.woff2") format("woff2"),
+		url("path_to_replace/DebutSans-TRIAL-MediumItalic.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "DebutSans-TRIAL-UltraLightItalic";
+	font-display: auto;
+	src: url("path_to_replace/DebutSans-TRIAL-UltraLightItalic.woff2") format("woff2"),
+		url("path_to_replace/DebutSans-TRIAL-UltraLightItalic.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "DebutSans-TRIAL-ExtraLightItalic";
+	font-display: auto;
+	src: url("path_to_replace/DebutSans-TRIAL-ExtraLightItalic.woff2") format("woff2"),
+		url("path_to_replace/DebutSans-TRIAL-ExtraLightItalic.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "DebutSans-TRIAL-Regular";
+	font-display: auto;
+	src: url("path_to_replace/DebutSans-TRIAL-Regular.woff2") format("woff2"),
+		url("path_to_replace/DebutSans-TRIAL-Regular.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "DebutSans-TRIAL-Black";
+	font-display: auto;
+	src: url("path_to_replace/DebutSans-TRIAL-Black.woff2") format("woff2"),
+		url("path_to_replace/DebutSans-TRIAL-Black.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "DebutSans-TRIAL-NormalItalic";
+	font-display: auto;
+	src: url("path_to_replace/DebutSans-TRIAL-NormalItalic.woff2") format("woff2"),
+		url("path_to_replace/DebutSans-TRIAL-NormalItalic.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "DebutSans-TRIAL-LightItalic";
+	font-display: auto;
+	src: url("path_to_replace/DebutSans-TRIAL-LightItalic.woff2") format("woff2"),
+		url("path_to_replace/DebutSans-TRIAL-LightItalic.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "DebutSans-TRIAL-Light";
+	font-display: auto;
+	src: url("path_to_replace/DebutSans-TRIAL-Light.woff2") format("woff2"),
+		url("path_to_replace/DebutSans-TRIAL-Light.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "DebutSans-TRIAL-RegularItalic";
+	font-display: auto;
+	src: url("path_to_replace/DebutSans-TRIAL-RegularItalic.woff2") format("woff2"),
+		url("path_to_replace/DebutSans-TRIAL-RegularItalic.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "DebutSans-TRIAL-DemiBold";
+	font-display: auto;
+	src: url("path_to_replace/DebutSans-TRIAL-DemiBold.woff2") format("woff2"),
+		url("path_to_replace/DebutSans-TRIAL-DemiBold.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "DebutSans-TRIAL-UltraLight";
+	font-display: auto;
+	src: url("path_to_replace/DebutSans-TRIAL-UltraLight.woff2") format("woff2"),
+		url("path_to_replace/DebutSans-TRIAL-UltraLight.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "DebutSans-TRIAL-Medium";
+	font-display: auto;
+	src: url("path_to_replace/DebutSans-TRIAL-Medium.woff2") format("woff2"),
+		url("path_to_replace/DebutSans-TRIAL-Medium.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "DebutSans-TRIAL-ExtraLight";
+	font-display: auto;
+	src: url("path_to_replace/DebutSans-TRIAL-ExtraLight.woff2") format("woff2"),
+		url("path_to_replace/DebutSans-TRIAL-ExtraLight.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "DebutSans-TRIAL-BoldItalic";
+	font-display: auto;
+	src: url("path_to_replace/DebutSans-TRIAL-BoldItalic.woff2") format("woff2"),
+		url("path_to_replace/DebutSans-TRIAL-BoldItalic.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "DebutSans-TRIAL-BlackItalic";
+	font-display: auto;
+	src: url("path_to_replace/DebutSans-TRIAL-BlackItalic.woff2") format("woff2"),
+		url("path_to_replace/DebutSans-TRIAL-BlackItalic.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "DebutSans-TRIAL-DemiBoldItalic";
+	font-display: auto;
+	src: url("path_to_replace/DebutSans-TRIAL-DemiBoldItalic.woff2") format("woff2"),
+		url("path_to_replace/DebutSans-TRIAL-DemiBoldItalic.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "DebutSans-TRIAL-Bold";
+	font-display: auto;
+	src: url("path_to_replace/DebutSans-TRIAL-Bold.woff2") format("woff2"),
+		url("path_to_replace/DebutSans-TRIAL-Bold.woff") format("woff");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "DebutSansVF";
+	font-display: auto;
+	src: url("path_to_replace/DebutSansVF.woff2") format("woff2"),
+		url("path_to_replace/DebutSansVF.woff") format("woff");
+	font-weight: normal;
+}
+
