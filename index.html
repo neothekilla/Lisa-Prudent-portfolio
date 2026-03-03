@@ -689,7 +689,34 @@ videos.forEach(video => {
 });
 
 
-    
+    /* =========================
+   MEDIA FADE IN
+========================= */
+
+const mediaElements = document.querySelectorAll(
+  ".carousel-item img, .carousel-item video"
+);
+
+mediaElements.forEach(media => {
+
+  if (media.tagName === "IMG") {
+    if (media.complete) {
+      media.classList.add("loaded");
+    } else {
+      media.addEventListener("load", () => {
+        media.classList.add("loaded");
+      });
+    }
+  }
+
+  if (media.tagName === "VIDEO") {
+    media.addEventListener("loadeddata", () => {
+      media.classList.add("loaded");
+    });
+  }
+
+});
+
 </script>
 
   

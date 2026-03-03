@@ -559,4 +559,15 @@ footer.footer-scrolling::before {
 }
 
 
+.carousel-item img,
+.carousel-item video {
+    opacity: 0;
+    transform: scale(0.98);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
 
+.carousel-item img.loaded,
+.carousel-item video.loaded {
+    opacity: 1;
+    transform: scale(1);
+}
