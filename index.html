@@ -670,15 +670,24 @@ const mediaObserver = new IntersectionObserver((entries) => {
 
       // Images
       if (el.tagName === "IMG" && el.dataset.src) {
-        el.src = el.dataset.src;
-        el.removeAttribute("data-src");
-      }
+  el.src = el.dataset.src;
+
+  el.onload = () => {
+    el.classList.add("is-loaded");
+  };
+
+  el.removeAttribute("data-src");
+}
 
       // Vidéos
       if (el.tagName === "VIDEO" && el.dataset.src) {
-        el.src = el.dataset.src;
-        el.load();
-      }
+  el.src = el.dataset.src;
+  el.load();
+
+  el.onloadeddata = () => {
+    el.classList.add("is-loaded");
+  };
+}
 
       if (el.tagName === "VIDEO") {
         el.play();
