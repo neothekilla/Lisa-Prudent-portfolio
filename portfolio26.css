@@ -564,7 +564,7 @@ footer.footer-scrolling::before {
 
 .carousel-item img,
 .carousel-item video {
-    opacity: 0;
+    opacity: 1;
     filter: blur(12px);
     transform: scale(1.02);
     transition:
