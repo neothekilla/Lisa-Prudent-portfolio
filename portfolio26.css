@@ -121,7 +121,24 @@ margin-left: 10px;
                     overflow-y: hidden;
                     height: 100%;
                     scrollbar-width: none;
-                }
+
+                      /* Effet brume sur les bords — remplace carousel-edge-blur */
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 40px,
+        black calc(100% - 40px),
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 40px,
+        black calc(100% - 40px),
+        transparent 100%
+    );
+}
+                
   
   
 .carousel-container::-webkit-scrollbar {
@@ -361,16 +378,15 @@ footer.footer-scrolling::before {
 }
 
 
-.carousel-edge-blur {
+/* .carousel-edge-blur {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-
-    height: calc(100vh - 240.5px);
-        pointer-events: none;
+    height: 100%;   
+    pointer-events: none;
     z-index: 3;
-}
+} 
 
 .carousel-edge-blur::before,
 .carousel-edge-blur::after {
@@ -400,7 +416,7 @@ footer.footer-scrolling::before {
         rgba(255, 255, 255, 0) 100%
     );
 }
-
+*/
 
 /* =========================
    ABOUT PAGE
@@ -581,4 +597,238 @@ footer.footer-scrolling::before {
     filter: blur(0);
     transform: scale(1);
 }
+/* =============================================
+   RESPONSIVE — À AJOUTER À LA FIN DE portfolio26.css
+   ============================================= */
 
+/* =========================
+   BASE RESPONSIVE FIXES
+========================= */
+
+html, body {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  /* =========================
+     HEADER
+  ========================= */
+  
+  @media (max-width: 480px) {
+    header {
+      padding: 8px 10px;
+    }
+    .left {
+      font-size: 0.85rem;
+      margin-left: 4px;
+    }
+    .right a {
+      font-size: 0.7rem;
+      margin-right: 6px;
+    }
+    .lang-toggle {
+      font-size: 0.7rem;
+      margin-left: 6px;
+    }
+  }
+  
+  /* =========================
+     SUBHEADER
+  ========================= */
+  
+  @media (max-width: 700px) {
+    .subheader {
+      grid-template-columns: repeat(3, auto);
+      gap: 6px 8px;
+      font-size: 0.72rem;
+      padding: 0 8px;
+      line-height: 1.2;
+    }
+  }
+  
+  @media (max-width: 380px) {
+    .subheader {
+      grid-template-columns: repeat(2, auto);
+      gap: 5px 10px;
+      font-size: 0.68rem;
+    }
+  }
+  
+ /* =========================
+   CAROUSEL WRAPPER
+========================= */
+
+@media (max-width: 768px) {
+    .carousel-wrapper {
+        margin: 6px 8px 8px 8px;
+        height: calc(100dvh - 40px - 80px - 160px);
+        min-height: 160px;
+      }
+  }
+  
+  @media (max-width: 480px) {
+    .carousel-wrapper {
+      margin: 4px 6px 6px 6px;
+      height: calc(100dvh - 38px - 90px - 120px);
+    }
+  }
+  
+  /* =========================
+     CAROUSEL CONTAINER
+  ========================= */
+  
+  .carousel-container {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+  
+  /* =========================
+     CAROUSEL TRACK & ITEMS
+  ========================= */
+  
+  @media (max-width: 768px) {
+    .carousel-track {
+      gap: 12px;
+      padding: 0 10px;
+    }
+    .carousel-item {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+    .carousel-item img,
+    .carousel-item video {
+      max-height: 55vh;
+      max-width: 90vw;
+      box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.12);
+    }
+    .carousel-item.project-start {
+      margin-left: 200px;
+    }
+    .carousel-container {
+      mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 18px,
+        black calc(100% - 18px),
+        transparent 100%
+      );
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 18px,
+        black calc(100% - 18px),
+        transparent 100%
+      );
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .carousel-track {
+      gap: 10px;
+      padding: 0 6px;
+    }
+    .carousel-item img,
+    .carousel-item video {
+      max-height: 48vh;
+      max-width: 88vw;
+    }
+    .carousel-item.project-start {
+      margin-left: 120px;
+    }
+  }
+  
+  /* =========================
+     FOOTER
+  ========================= */
+  
+  @media (max-width: 768px) {
+    footer {
+      padding: 10px 12px 12px 12px;
+    }
+    .footer-content {
+      flex-direction: column;
+      gap: 4px;
+      align-items: flex-start;
+    }
+    .footer-description {
+      font-size: 0.72rem;
+      line-height: 1.35;
+      margin-left: 0;
+      /* Supprime le max-height et overflow — le texte s'affiche en entier */
+      max-height: none;
+      overflow-y: visible;
+    }
+    .footer-info {
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer-medium,
+    .footer-dimensions {
+      font-size: 0.7rem;
+      margin-right: 0;
+      white-space: nowrap;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    footer {
+      padding: 8px 10px 10px 10px;
+    }
+    .footer-description {
+      font-size: 0.68rem;
+    }
+    .footer-medium,
+    .footer-dimensions {
+      font-size: 0.65rem;
+    }
+  }
+  
+  /* =========================
+     ABOUT PAGE
+  ========================= */
+  
+  @media (max-width: 768px) {
+    .about-container {
+      padding: 40px 16px 20px;
+      gap: 18px;
+      justify-content: flex-start;
+    }
+    .about-video {
+      width: 150px;
+      height: 150px;
+    }
+    .about-description {
+      font-size: 0.8rem;
+      max-width: 90vw;
+    }
+    .about-links {
+      gap: 12px;
+    }
+    .about-links a {
+      font-size: 0.75rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .about-video {
+      width: 120px;
+      height: 120px;
+    }
+    .about-description {
+      font-size: 0.76rem;
+    }
+  }
+  
+  /* =========================
+     WAITING SCREEN
+  ========================= */
+  
+  @media (max-width: 480px) {
+    #waitingScreen {
+      background-size: cover;
+      background-position: center center;
+    }
+  }
+  

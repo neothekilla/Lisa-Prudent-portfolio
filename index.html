@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="portfolio26.css" />
   <link rel="icon" type="image/png" href="assets-26/blue-icone.png">
+  
 
   <title>Lisa Prudent ❦</title>
 </head>
@@ -44,7 +45,6 @@
 
          <!-- Carrousel -->
          <div class="carousel-wrapper">
-            <div class="carousel-edge-blur"></div> 
             <div class="carousel-container" id="carousel">
               <div class="carousel-track" id="carouselTrack">
 
@@ -576,6 +576,7 @@
   ========================= */
   
   carousel.addEventListener('scroll', () => {
+      if (isScrollingProgrammatically) return; //
   
     const center = carousel.scrollLeft + carousel.offsetWidth / 2;
   
@@ -620,59 +621,131 @@
     carousel.scrollLeft += scrollAmount;
   
   }, { passive: false });
+
+/* =========================
   
-  /* =========================
-     CLICK SUBHEADER
-  ========================= */
-  
-  subheaderLinks.forEach(link => {
-  
-    link.addEventListener('click', (e) => {
-  
-      e.preventDefault();
-  
-      const projectId = link.dataset.project;
-  
-      const firstItem = document.querySelector(
-        `.carousel-item[data-project="${projectId}"]`
-      );
-  
-      if (firstItem) {
-  
-        carousel.scrollTo({
-          left: firstItem.offsetLeft - 50,
-          behavior: 'smooth'
-        });
-  
-        updateActiveProject(projectId);
-  
-      }
-  
-    });
-  
-  });
-  
-  /* =========================
-     MARQUER DÉBUT PROJET
-  ========================= */
-  
-  let seenProjects = new Set();
-  
-  carouselItems.forEach((item, index) => {
-  
+========================= */
+
+/* Scroll touch fluide sur mobile */
+(function () {
+  if (('ontouchstart' in window) || navigator.maxTouchPoints > 0) {
+    carousel.style.scrollBehavior = 'auto';
+  }
+})();
+
+/* =========================
+   EDGE BLUR 
+========================= */
+
+function resizeCarouselEdgeBlur() {
+  const edgeBlur = document.querySelector('.carousel-edge-blur');
+  const wrapper  = document.querySelector('.carousel-wrapper');
+  if (edgeBlur && wrapper) {
+    edgeBlur.style.height = wrapper.offsetHeight + 'px';
+  }
+}
+
+window.addEventListener('resize', resizeCarouselEdgeBlur);
+
+/* On attend que le DOM soit complètement rendu avant le premier calcul */
+requestAnimationFrame(() => {
+  requestAnimationFrame(resizeCarouselEdgeBlur);
+});
+
+/* =========================
+   POSITIONS PROJETS (précalculées)
+========================= */
+
+const projectOffsets = {};
+
+function computeProjectOffsets() {
+  let offset = 0;
+  let lastProject = null;
+  const gap = 20; // même valeur que le gap du carousel-track
+
+  carouselItems.forEach((item) => {
     const projectId = item.getAttribute('data-project');
-  
-    if (!seenProjects.has(projectId)) {
-  
-      seenProjects.add(projectId);
-  
-      if (index !== 0) {
-        item.classList.add('project-start');
+
+    if (projectId !== lastProject) {
+      // Premier item de ce projet : on enregistre son offset actuel
+      if (lastProject !== null) {
+        // Ajoute le margin-left project-start (500px desktop, géré via offsetLeft)
+        offset = item.offsetLeft;
       }
-  
+      projectOffsets[projectId] = offset;
+      lastProject = projectId;
     }
-  
   });
+}
+/* =========================
+   MARQUER DÉBUT PROJET
+========================= */
+
+let seenProjects = new Set();
+
+carouselItems.forEach((item, index) => {
+  const projectId = item.getAttribute('data-project');
+  if (!seenProjects.has(projectId)) {
+    seenProjects.add(projectId);
+    if (index !== 0) {
+      item.classList.add('project-start');
+    }
+  }
+});
+/*
+// DEBUG TEMPORAIRE — à supprimer après
+subheaderLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const projectId = link.dataset.project;
+    const targetItem = document.querySelector(`.carousel-item[data-project="${projectId}"]`);
+    
+    const carouselRect = carousel.getBoundingClientRect();
+    const itemRect = targetItem.getBoundingClientRect();
+    
+    console.log('=== CLICK', projectId, '===');
+    console.log('carousel.scrollLeft:', carousel.scrollLeft);
+    console.log('carouselRect.left:', carouselRect.left);
+    console.log('itemRect.left:', itemRect.left);
+    console.log('delta (itemRect.left - carouselRect.left):', itemRect.left - carouselRect.left);
+    console.log('targetScroll calculé:', carousel.scrollLeft + (itemRect.left - carouselRect.left) - 50);
+    console.log('targetItem.offsetLeft:', targetItem.offsetLeft);
+    console.log('targetItem.offsetParent:', targetItem.offsetParent);
+  });
+});
+
+/* =========================
+   CLICK SUBHEADER
+========================= */
+
+let isScrollingProgrammatically = false;
+
+subheaderLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const projectId = link.dataset.project;
+    const targetItem = document.querySelector(
+      `.carousel-item[data-project="${projectId}"]`
+    );
+    if (!targetItem) return;
+
+    // Bloque le scroll listener pendant l'animation
+    isScrollingProgrammatically = true;
+    updateActiveProject(projectId);
+
+    targetItem.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'start'
+    });
+
+    // Débloque après la fin de l'animation (smooth ~600ms max)
+    setTimeout(() => {
+      isScrollingProgrammatically = false;
+    }, 800);
+  });
+});
   
   /* =========================
      EFFET SCROLL FOOTER
